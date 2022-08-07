@@ -2,22 +2,17 @@ import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    --dark: #131e2a;
-    --green: #1cbe74;
-    --yellow: #fab52c;
-    --blue: #0094fe;
-    --blue-hover: rgb(25 131 207);
-    --red: #f35130;
-    --card: #1d2c3d;
+    --bg: #ECE6E0;
+    --font-mako: 'Mako', sans-serif;
+    --font-styled: "OrpheusW05-Regular";
+    --brown: #A6753F;
   }
 
   * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    font-family: 'Jost', sans-serif;
-    border: 1px soild red;
+    border: 1px soild red !important;
   }
 
   html {
@@ -27,9 +22,13 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
+    color: ;
     transition: all 0.2s linear;
+    overflow-x: hidden;
+  }
+
+  p, div {
+    font-family: var(--font-mako);
   }
 `;
 
@@ -49,6 +48,8 @@ export const Container = styled.div`
 export const Heading = styled.h1`
   font-size: 4rem;
   font-weight: 500;
+  font-family: var(--font-styled);
+  text-align: center;
 
   @media (max-width: 900px) {
     font-size: 3rem;
@@ -56,8 +57,10 @@ export const Heading = styled.h1`
 `
 
 export const SubHeading = styled.p`
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   margin-bottom: 4rem;
+  font-family: var(--font-mako);
+  text-align: center;
 
   @media (max-width: 900px) {
     font-size: 1.8rem;
@@ -70,7 +73,7 @@ export const Button = styled.div`
   padding: 1rem 2.5rem;
   background-color: var(--blue);
   border-radius: 0.5rem;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: all 0.2s linear;
 
   &:hover {
@@ -78,6 +81,7 @@ export const Button = styled.div`
     background-color: var(--blue-hover);
   }
 `
+
 // Themes
 export const lightTheme = {
   background: '#efe7e7',

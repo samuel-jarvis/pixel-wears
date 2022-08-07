@@ -1,8 +1,14 @@
 import React from 'react'
+import Hero from '../Container/Hero/Hero'
+import TopSelling from '../Container/TopSelling/TopSelling'
+
 
 const Home = () => {
   return (
-    <div>This is the home</div>
+    <div>
+      <Hero />
+      <TopSelling />
+    </div>
   )
 }
 

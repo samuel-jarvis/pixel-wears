@@ -1,3 +1,4 @@
+import 'normalize.css'
 import GlobalStyle from './globalStyles';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
@@ -7,18 +8,18 @@ import Footer from './components/Footer/Footer';
 
 function App() {
 	return (
-		<Router>
+		<>
 			<GlobalStyle />
 
 			<Navbar />
 
 			<Routes>
-				<Route exact path="/" component={Home} />
-				<Route path="/about" component={About} />
+				<Route exact path="/" element={<Home />} />
+				<Route path="about" element={<About />} />
 			</Routes>
 
 			<Footer />
-		</Router>
+		</>
 	);
 }
 
