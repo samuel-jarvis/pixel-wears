@@ -9,7 +9,7 @@ const Hero = () => {
 				Pixel Wears
 			</Text>
 
-			<HeroImage src={model} alt="model" initial={{y: 800}} animate={{ y: 0 }} transition={{ duration: 1, delay: .8, type: 'tween'}} />
+			<HeroImage src={model} alt="model" initial={{y: -800}} animate={{ y: 0 }} transition={{ duration: 1.5, delay: .2, type: 'tween'}} />
 			{/* <HeroButton>SHOP NOW </HeroButton> */}
 		</HeroContainer>
 	);

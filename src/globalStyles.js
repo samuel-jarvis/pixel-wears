@@ -58,7 +58,7 @@ export const Heading = styled.h1`
 
 export const SubHeading = styled.p`
   font-size: 1.8rem;
-  margin-bottom: 4rem;
+  margin-bottom: 8rem;
   font-family: var(--font-mako);
   text-align: center;
 

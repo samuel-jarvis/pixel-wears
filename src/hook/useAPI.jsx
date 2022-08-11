@@ -10,9 +10,14 @@ export const useAPI = (url) => {
       try {
         const response = await fetch(url);
         const json = await response.json();
-        console.log(json);
+        
         setData(json);
-        setLoading(false);
+
+        //delay the loading
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
+
       } catch (error) {
         setError(error);
         setLoading(false);

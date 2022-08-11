@@ -10,6 +10,7 @@ export const Nav = styled(motion.nav)`
 	align-items: center;
 	padding: 2rem 4rem;
 	position: fixed;
+	top: 0;
 	width: 100%;
 	z-index: 80;
 `;
@@ -50,7 +51,7 @@ export const CartIcon = styled(motion.div)`
 
 
 export const Menu = styled(motion.div)`
-	position: absolute;
+	position: fixed;
 	background-color: white;
 	height: 100vh;
 	width: 100%;
