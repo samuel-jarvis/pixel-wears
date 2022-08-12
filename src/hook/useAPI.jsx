@@ -1,4 +1,6 @@
 import {useEffect, useState} from 'react';
+import products from '../Data/products';
+
 
 export const useAPI = (url) => {
   const [data, setData] = useState(null);
@@ -12,6 +14,7 @@ export const useAPI = (url) => {
         const json = await response.json();
         
         setData(json);
+        // setData(products);
 
         //delay the loading
         setTimeout(() => {

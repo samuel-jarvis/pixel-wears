@@ -12,9 +12,9 @@ import { Nav, MenuBtn, Logo, CartIcon, Menu, MenuList, ListLinks, MenuImage, Leg
 
 const links = [
 	{name: 'Home', path: '/', id : 1},
+	{name: 'Shop', path: '/shop', id : 4},
 	{name: 'About', path: '/about', id : 2},
 	{name: 'Contact', path: '/contact', id : 3},
-	{name: 'Shop', path: '/shop', id : 4},
 ]
 
 const legal = [
@@ -108,8 +108,6 @@ const menuList2 = {
 		},
 	},
 }
-
-
 
 
 const Navbar = () => {
