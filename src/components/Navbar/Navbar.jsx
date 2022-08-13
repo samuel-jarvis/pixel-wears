@@ -2,27 +2,41 @@ import React from 'react';
 import LogoImg from '../../assets/logo.png';
 import menuGirl from '../../assets/menuModel.jpg';
 import { BsCart3, BsList } from 'react-icons/bs';
-import {GrClose} from 'react-icons/gr';
-import {motion, LayoutGroup } from 'framer-motion';
+import { GrClose } from 'react-icons/gr';
+import { motion, LayoutGroup } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { AnimatePresence } from 'framer-motion';
 
-import { Nav, MenuBtn, Logo, CartIcon, Menu, MenuList, ListLinks, MenuImage, LegalList } from './NavbarStyled';
+
+import {
+	Nav,
+	MenuBtn,
+	Logo,
+	CartIcon,
+	Menu,
+	MenuList,
+	ListLinks,
+	MenuImage,
+	LegalList,
+} from './NavbarStyled';
+import CartModal from '../CartModal/CartModal';
 
 const links = [
-	{name: 'Home', path: '/', id : 1},
-	{name: 'Shop', path: '/shop', id : 4},
-	{name: 'Cart', path: '/cart', id : 5},
-	{name: 'About', path: '/about', id : 2},
-	{name: 'Contact', path: '/contact', id : 3},
-]
+	{ name: 'Home', path: '/', id: 1 },
+	{ name: 'Shop', path: '/shop', id: 4 },
+	{ name: 'Cart', path: '/cart', id: 5 },
+	{ name: 'About', path: '/about', id: 2 },
+	{ name: 'Contact', path: '/contact', id: 3 },
+];
 
 const legal = [
-	{name: 'Terms & Conditon', path: '/'},
-	{name: 'Privacy Policy', path: '/'},
-	{name: 'Shipping', path: '/'},
-]
+	{ name: 'Terms & Conditon', path: '/' },
+	{ name: 'Privacy Policy', path: '/' },
+	{ name: 'Shipping', path: '/' },
+];
 
 const parentVariant = {
 	visible: {
@@ -32,7 +46,7 @@ const parentVariant = {
 			staggerChildren: 0.5,
 		},
 	},
-}
+};
 
 const variants = {
 	hidden: {
@@ -62,9 +76,9 @@ const menu = {
 		transition: {
 			duration: 1,
 			type: 'tween',
-		}
+		},
 	},
-}
+};
 
 const menuList = {
 	visible: {
@@ -72,10 +86,10 @@ const menuList = {
 			when: 'beforeChildren',
 			type: 'tween',
 			staggerChildren: 0.5,
-			delayChildren: .6,
+			delayChildren: 0.6,
 		},
 	},
-}
+};
 
 const listVariants = {
 	hidden: {
@@ -89,7 +103,7 @@ const listVariants = {
 		transition: {
 			duration: 1,
 			type: 'tween',
-		}
+		},
 	},
 };
 
@@ -105,68 +119,81 @@ const menuList2 = {
 			when: 'beforeChildren',
 			type: 'tween',
 			// staggerChildren: 0.5,
-			delayChildren: .6,
+			delayChildren: 0.6,
 		},
 	},
-}
-
+};
 
 const Navbar = () => {
+	const modalSate = useSelector(state =>  (state.value))
+
+	const [showCartModal, setShowCartModal] = useState(false);
+
 	const [isOpen, setIsOpen] = useState(false);
 
 	const handleClick = () => {
-		isOpen ? setIsOpen(false) : setIsOpen(true)
-	}
+		isOpen ? setIsOpen(false) : setIsOpen(true);
+	};
 
 	let location = useLocation();
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
+	useEffect(() => {
+		setIsOpen(false);
+	}, [location]);
 
 	return (
 		<>
-		<Menu 
-			variants={menu} 
-			initial='hidden' 
-			animate={isOpen ? 'visible' : 'hidden'}
-			transition = {{duration: 1.5}} >
+		<AnimatePresence>
+			{
+				showCartModal && <CartModal showModal={setShowCartModal}/>
+			}
+		</AnimatePresence>
 			
-			<MenuList  variants={menuList} >
-				{links.map(({name, path, id}) => (
-					<ListLinks key={id} variants={listVariants}> 
-						<Link to={path}>{name}</Link>
-					</ListLinks>
-				))}
-			</MenuList>
+			<Menu
+				variants={menu}
+				initial="hidden"
+				animate={isOpen ? 'visible' : 'hidden'}
+				transition={{ duration: 1.5 }}
+			>
+				<MenuList variants={menuList}>
+					{links.map(({ name, path, id }) => (
+						<ListLinks key={id} variants={listVariants}>
+							<Link to={path}>{name}</Link>
+						</ListLinks>
+					))}
+				</MenuList>
 
-			<LegalList variants={menuList2}>
-				{legal.map(({name, path}) => (
-					<motion.li key={name} variants={listVariants}>
-						<Link to={path}>{name}</Link>
-					</motion.li>
-				))}
-			</LegalList>
+				<LegalList variants={menuList2}>
+					{legal.map(({ name, path }) => (
+						<motion.li key={name} variants={listVariants}>
+							<Link to={path}>{name}</Link>
+						</motion.li>
+					))}
+				</LegalList>
 
-			
-			<MenuImage key={isOpen} initial={{width: 0}} animate={{width: '600px'}} transition={{delay: 1, duration: 1}}>
-				<img src={menuGirl} alt='menu' />
-			</MenuImage>
-		</Menu>
-		
-		<Nav variants={parentVariant} initial = "hidden" animate='visible'>
-			<MenuBtn variants={variants} onClick={handleClick}>
-				{isOpen ?  <GrClose /> : <BsList />}
-			</MenuBtn>
+				<MenuImage
+					key={isOpen}
+					initial={{ width: 0 }}
+					animate={{ width: '600px' }}
+					transition={{ delay: 1, duration: 1 }}
+				>
+					<img src={menuGirl} alt="menu" />
+				</MenuImage>
+			</Menu>
 
-			<Logo to="/" >
-				<motion.img src={LogoImg} variants={variants}  alt="logo" />
-			</Logo>
+			<Nav variants={parentVariant} initial="hidden" animate="visible">
+				<MenuBtn variants={variants} onClick={handleClick}>
+					{isOpen ? <GrClose /> : <BsList />}
+				</MenuBtn>
 
-			<CartIcon variants={variants}>	
-				<BsCart3 />
-			</CartIcon>
-		</Nav>
+				<Logo to="/">
+					<motion.img src={LogoImg} variants={variants} alt="logo" />
+				</Logo>
+
+				<CartIcon variants={variants} onClick={() => setShowCartModal(true)}>
+					<BsCart3 />
+				</CartIcon>
+			</Nav>
 		</>
 	);
 };

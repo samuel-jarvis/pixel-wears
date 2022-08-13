@@ -5,7 +5,7 @@ import {useState, useEffect} from 'react'
 import {motion} from 'framer-motion'
 import {AnimatePresence} from 'framer-motion'
 import Loading from '../../components/Loading/Loading'
-import {addToCart} from '../Cart/cartSlice'
+import {addToCart} from '../../components/CartModal/cartSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 
