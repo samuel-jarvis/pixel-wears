@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {motion} from 'framer-motion'
 import {AnimatePresence} from 'framer-motion'
-import { useLocation } from 'react-router-dom';
+import Loading from '../../components/Loading/Loading'
 
 import {ProductContainer, 
   ProductImage,
@@ -13,7 +13,6 @@ import {ProductContainer,
   Price, Details, Image,
   WhiteBtn,  BlackBtn,
   Sizes, Size} from './ProductDetailStyled'
-import Loading from '../../components/Loading/Loading'
 
 
 const SIZES = ['S', 'M', 'L', 'XL', 'XXL']
@@ -23,7 +22,7 @@ const ProductDetail = () => {
   // Get product id from url to load API
   const {id} = useParams();
 
-  const {data : product, loading, error} = useAPI(`https://fakestoreapi.com/products/${id}`);
+  const {data : product, loading, error} = useAPI(`${id}`);
   
   // Scrolll to top on page load
   useEffect(() => {

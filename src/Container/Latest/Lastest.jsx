@@ -12,7 +12,7 @@ const Lastest = () => {
 		data: products,
 		loading,
 		error,
-	} = useAPI('https://fakestoreapi.com/products');
+	} = useAPI('');
 	console.log(products);
 	return (
 		<Container>
@@ -29,7 +29,7 @@ const Lastest = () => {
 						pauseOnHover: true,
 						pauseOnFocus: true,
 						rewind: false,
-						speed: 1,
+						speed: 0.6,
 					},
 				}}
 				extensions={{ AutoScroll }}

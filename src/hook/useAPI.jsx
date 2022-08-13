@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import products from '../Data/products';
 
 
-export const useAPI = (url) => {
+export const useAPI = (query) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,16 +10,17 @@ export const useAPI = (url) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(`https://fakestoreapi.com/products/${query}`);
+        console.log(query)
         const json = await response.json();
         
         setData(json);
         // setData(products);
 
-        //delay the loading
+        //delay the loading3
         setTimeout(() => {
           setLoading(false);
-        }, 2000);
+        }, 3000);
 
       } catch (error) {
         setError(error);
@@ -27,6 +28,6 @@ export const useAPI = (url) => {
       }
     };
     fetchData();
-  } , [url]);
-  return {data, loading, error};
+  } , [query]);
+  return {data, loading, error, setData};
 }

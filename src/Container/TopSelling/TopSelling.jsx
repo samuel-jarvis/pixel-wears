@@ -7,7 +7,7 @@ import  SingleProduct  from '../../components/SingleProduct/SingleProduct'
 
 
 const TopSelling = () => {
-  const {data : products, loading, error} = useAPI('https://fakestoreapi.com/products?limit=8');
+  const {data : products, loading, error} = useAPI('?limit=8');
 
   return (
     <TopSellingContainer>
