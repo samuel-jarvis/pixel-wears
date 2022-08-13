@@ -5,6 +5,9 @@ import {useState, useEffect} from 'react'
 import {motion} from 'framer-motion'
 import {AnimatePresence} from 'framer-motion'
 import Loading from '../../components/Loading/Loading'
+import {addToCart} from '../Cart/cartSlice'
+import { useSelector, useDispatch } from 'react-redux'
+
 
 import {ProductContainer, 
   ProductImage,
@@ -23,6 +26,7 @@ const ProductDetail = () => {
   const {id} = useParams();
 
   const {data : product, loading, error} = useAPI(`${id}`);
+  console.log(product)
   
   // Scrolll to top on page load
   useEffect(() => {
@@ -31,6 +35,12 @@ const ProductDetail = () => {
   },[]);
 
   const [selectedSize, setSelectedSize] = useState('')
+
+  const dispatch = useDispatch()
+
+  // add the selected size to the cart
+  const NewCart = [{...product, selectedSize}]
+  console.log(NewCart)
 
   return (
     <AnimatePresence>
@@ -44,20 +54,26 @@ const ProductDetail = () => {
             </Image>
           </ProductImage>
 
+          <p>{error}</p>
+
           <ProductDetails>
             <h1>{product.title}</h1>
             <p>{product.category}</p>
             <Price>${product.price}</Price>
             <Details>{product.description}</Details>
 
-            <Sizes>
-              {SIZES.map(size => (
-                <Size size={size} selectedSize={selectedSize} onClick={() => setSelectedSize(size)}>{size}</Size>
-              ))}
-            </Sizes>
+            {/* Show sized for only clothing products */}
+            
+            { product.category === "men's clothing" || product.category === "men's clothing" ?
+              <Sizes>
+                {SIZES.map(size => (
+                  <Size size={size} selectedSize={selectedSize} onClick={() => setSelectedSize(size)}>{size}</Size>
+                ))}
+              </Sizes> : ''
+            }
 
             <div>
-              <BlackBtn>ADD TO CART</BlackBtn>
+              <BlackBtn onClick={() => dispatch(addToCart(product))}>ADD TO CART</BlackBtn>
               <WhiteBtn>BUY NOW</WhiteBtn>
             </div>
 

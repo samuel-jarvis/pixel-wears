@@ -11,7 +11,6 @@ export const useAPI = (query) => {
     const fetchData = async () => {
       try {
         const response = await fetch(`https://fakestoreapi.com/products/${query}`);
-        console.log(query)
         const json = await response.json();
         
         setData(json);

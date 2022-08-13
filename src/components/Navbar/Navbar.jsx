@@ -13,6 +13,7 @@ import { Nav, MenuBtn, Logo, CartIcon, Menu, MenuList, ListLinks, MenuImage, Leg
 const links = [
 	{name: 'Home', path: '/', id : 1},
 	{name: 'Shop', path: '/shop', id : 4},
+	{name: 'Cart', path: '/cart', id : 5},
 	{name: 'About', path: '/about', id : 2},
 	{name: 'Contact', path: '/contact', id : 3},
 ]

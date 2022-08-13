@@ -13,7 +13,7 @@ const Lastest = () => {
 		loading,
 		error,
 	} = useAPI('');
-	console.log(products);
+	// console.log(products);
 	return (
 		<Container>
 			<LatestHeading>Latest Drop</LatestHeading>
