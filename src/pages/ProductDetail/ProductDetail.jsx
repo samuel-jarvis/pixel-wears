@@ -31,7 +31,7 @@ const ProductDetail = () => {
   // Scrolll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log('changed')
+    // console.log('changed')
   },[]);
 
   const [selectedSize, setSelectedSize] = useState('')

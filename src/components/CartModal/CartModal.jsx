@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleCart } from './cartSlice';
+import { toggleCart, decreaseQuantity, increaseQuantity, removeFromCart } from './cartSlice';
 import { Container } from '../../globalStyles';
 import { AnimatePresence } from 'framer-motion';
 
@@ -11,8 +11,12 @@ import {
 	CloseModal,
 	CartProducts,
 	CartProduct,
+	Total,
 	SubTotal,
 	CartBtns,
+	ProductInfo,
+	Quantity,
+	Add, 	Minus, 	Delete
 } from './CartModalStyled';
 
 const variant = {
@@ -28,11 +32,11 @@ const CartModal = ({ showModal }) => {
 	const cart = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 
-	console.log(cart);
 
 	return (
 		<Overlay
-			variants={variant}
+			onClick={() => showModal(false)}
+			variants={variant} 
 			initial="hidden"
 			animate="visible"
 			transition={{ type: 'tween', duration: 0.5 }}
@@ -46,23 +50,40 @@ const CartModal = ({ showModal }) => {
 			>
 				<CartHeading>
 					<h3>Your Cart</h3>
-					<p>8</p>
-					<CloseModal onClick={() => showModal(false)} />
+					<p>{cart.length}</p>
+					<CloseModal onClick={(e) => {
+						showModal(false)
+						}} />
 				</CartHeading>
 
-				{/* <CartProducts>
+				<CartProducts onClick={e => e.stopPropagation()}>
           {cart.map(item => (
             <CartProduct key={item.id}>
-              <img src={item.image} alt={item.name} />
-              <div> 
-                <h4>{item.name}</h4>
-                <p>{item.price}</p>
-              </div>
+              <ProductInfo> 
+              	<img src={item.image} alt={item.name} />
+								<div>
+									<h4>{item.title.length > 30 ? item.title.substring(0, 30) + "..." : item.title}</h4>
+									<p>${item.price}</p>
+								</div>
+              </ProductInfo>
+
+							<Quantity>
+								<Minus onClick={() => dispatch(decreaseQuantity(item.id))} />
+								<p>{item.quantity}</p>	
+								<Add onClick={() => dispatch(increaseQuantity(item.id))} />
+							</Quantity>
+							
+							<Delete onClick={() => dispatch(removeFromCart(item.id))} />
+							
             </CartProduct>
           ))}
-        </CartProducts> */}
+        </CartProducts>
 
-				<SubTotal>SubTotal</SubTotal>
+				<Total>
+					<SubTotal>Total</SubTotal>
+					<p>${cart.reduce((a, b) => a + b.price * b.quantity, 0).toFixed(2)}</p>
+				</Total>
+
 
 				<CartBtns></CartBtns>
 			</CartCard>

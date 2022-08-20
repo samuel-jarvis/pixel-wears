@@ -95,10 +95,12 @@ const Shop = () => {
 						loading && <Loading style={{}}/>
 					}
 
-					{!loading &&
+					{products &&
 						products.map((product) => (
 							<SingleProduct key={product.id} product={product} />
 						))}
+
+					{error && <p>{error.message}</p>}
 				</ProductsList>
 			</ShopGroup>
 		</ShopContainer>

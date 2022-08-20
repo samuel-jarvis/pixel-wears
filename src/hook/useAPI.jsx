@@ -16,13 +16,14 @@ export const useAPI = (query) => {
         setData(json);
         // setData(products);
 
-        //delay the loading3
+        //delay the loading
         setTimeout(() => {
           setLoading(false);
-        }, 3000);
+        }, 1000);
 
       } catch (error) {
         setError(error);
+        console.log(`the error is ${error}`);
         setLoading(false);
       }
     };
