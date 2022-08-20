@@ -8,22 +8,25 @@ export const useAPI = (query) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    setData(products);
+
     const fetchData = async () => {
       try {
         const response = await fetch(`https://fakestoreapi.com/products/${query}`);
         const json = await response.json();
         
-        setData(json);
-        // setData(products);
+        // setData(json);
+        setData(products);
 
         //delay the loading
-        setTimeout(() => {
+        // setTimeout(() => {
           setLoading(false);
-        }, 1000);
+        // }, 1000);
 
       } catch (error) {
         setError(error);
         console.log(`the error is ${error}`);
+        setData(products);
         setLoading(false);
       }
     };
