@@ -14,6 +14,7 @@ import {
 	Total,
 	SubTotal,
 	CartBtns,
+	Checkout,
 	ProductInfo,
 	Quantity,
 	Add, 	Minus, 	Delete
@@ -85,7 +86,9 @@ const CartModal = ({ showModal }) => {
 				</Total>
 
 
-				<CartBtns></CartBtns>
+				<CartBtns>
+					<Checkout>Checkout</Checkout>
+				</CartBtns>
 			</CartCard>
 		</Overlay>
 		// </AnimatePresence>

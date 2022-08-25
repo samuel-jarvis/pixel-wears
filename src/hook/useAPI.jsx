@@ -1,36 +1,35 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import products from '../Data/products';
 
-
 export const useAPI = (query) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+	const [data, setData] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 
-  useEffect(() => {
+	useEffect(() => {
     setData(products);
 
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://fakestoreapi.com/products/${query}`);
-        const json = await response.json();
-        
-        // setData(json);
-        setData(products);
+		const fetchData = async () => {
+			try {
+				const response = await fetch(
+					`https://fakestoreapi.com/products/${query}`
+				);
+				const json = await response.json();
 
-        //delay the loading
-        // setTimeout(() => {
-          setLoading(false);
-        // }, 1000);
+				setData(json);
+				// setData(products);
 
-      } catch (error) {
-        setError(error);
-        console.log(`the error is ${error}`);
-        setData(products);
-        setLoading(false);
-      }
-    };
-    fetchData();
-  } , [query]);
-  return {data, loading, error, setData};
-}
+				//delay the loading3
+				setTimeout(() => {
+					setLoading(false);
+				}, 1000);
+			} catch (error) {
+				setError(error);
+				setData(products);
+				setLoading(false);
+			}
+		};
+		fetchData();
+	}, [query]);
+	return { data, loading, error, setData };
+};

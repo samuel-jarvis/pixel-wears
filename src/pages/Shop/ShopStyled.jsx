@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Container, Heading} from '../../globalStyles';
+import {Container, Heading, Button} from '../../globalStyles';
 
 export const ShopContainer = styled(Container)`
 `
@@ -68,4 +68,11 @@ export const PriceInput = styled.div`
   & :not(input) {
     margin: 0 0.5rem;
   }
+`
+
+export const FilterButton = styled(Button)`
+  background-color: var(--brown);
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 1.5rem;
 `

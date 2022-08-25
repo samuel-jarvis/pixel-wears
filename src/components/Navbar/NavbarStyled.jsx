@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import {Link} from 'react-router-dom';
-import {GrClose} from 'react-icons/gr';
+import { Link } from 'react-router-dom';
+import { GrClose } from 'react-icons/gr';
 import Line from '../../assets/line.png';
 
 export const Nav = styled(motion.nav)`
@@ -9,10 +9,13 @@ export const Nav = styled(motion.nav)`
 	justify-content: space-between;
 	align-items: center;
 	padding: 2rem 4rem;
-	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 80;
+	position: fixed;
+	/* position: ${(props) => (props.sticky === true ? 'sticky' : '')}; */
+	background-color: ${(props) => (props.sticky === true ? 'white' : '')};
+	transition: all 0.2s ease-in-out;
 `;
 
 export const MenuBtn = styled(motion.div)`
@@ -49,31 +52,28 @@ export const CartIcon = styled(motion.div)`
 	cursor: pointer;
 `;
 
-
 export const Menu = styled(motion.div)`
 	position: fixed;
 	background-color: white;
 	height: 100vh;
 	width: 100%;
 	top: 0;
-	z-index: 55;
+	z-index: 95;
 	background-image: url(${Line});
 	background-repeat: no-repeat;
 	background-position: center;
 	padding: 15rem 0 0 10rem;
-`
+`;
 
 export const CloseBtn = styled(GrClose)`
-		color: black;
-		font-size: 3.4rem;
-		cursor: pointer;
-
-`
+	color: black;
+	font-size: 3.4rem;
+	cursor: pointer;
+`;
 
 export const MenuList = styled(motion.ul)`
 	/* padding: 15rem 0 0 10rem; */
-
-`
+`;
 
 export const ListLinks = styled(motion.li)`
 	font-size: 4rem;
@@ -82,18 +82,17 @@ export const ListLinks = styled(motion.li)`
 	cursor: pointer;
 	list-style: none;
 
-
 	a {
 		text-decoration: none;
 		color: black;
-		transition: color,padding 0.4s ease-in-out;
+		transition: color, padding 0.4s ease-in-out;
 
 		&:hover {
 			color: var(--brown);
 			padding-left: 2rem;
 		}
 	}
-`
+`;
 
 export const MenuImage = styled(motion.div)`
 	position: absolute;
@@ -107,7 +106,7 @@ export const MenuImage = styled(motion.div)`
 		height: 100%;
 		object-fit: cover;
 	}
-`
+`;
 
 export const LegalList = styled(motion.ul)`
 	font-size: 1.4rem;
@@ -122,4 +121,12 @@ export const LegalList = styled(motion.ul)`
 			font-family: var(--font-mako);
 		}
 	}
+`;
+
+
+export const CloseNav = styled.div`
+	position: absolute;
+	top: 3rem;
+	left: 4rem;
+	font-size: 3rem;
 `

@@ -17,18 +17,14 @@ import {ProductContainer,
   WhiteBtn,  BlackBtn,
   Sizes, Size} from './ProductDetailStyled'
 
-
 const SIZES = ['S', 'M', 'L', 'XL', 'XXL']
-
 
 const ProductDetail = () => {
   // Get product id from url to load API
   const {id} = useParams();
 
   const {data : product, loading, error} = useAPI(`${id}`);
-  console.log(product)
-  
-  // Scrolll to top on page load
+
   useEffect(() => {
     window.scrollTo(0, 0);
     // console.log('changed')

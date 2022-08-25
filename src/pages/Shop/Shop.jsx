@@ -13,6 +13,7 @@ import {
 	ProductsList,
 	FilterGroup,
 	PriceInput,
+	FilterButton,
 } from './ShopStyled';
 // men's%20clothing
 const Categories = [
@@ -43,9 +44,6 @@ const NewCategories = [
 
 
 const Shop = () => {
-	const [minPrice, setMinPrice] = useState();
-	const [maxPrice, setMaxPrice] = useState();
-	
   // const { data, loading, error, query } = useAPI(category);
   const [category, setCategory] = useState('')
   const { data, loading, error, query } = useAPI(`${category}`);
@@ -57,10 +55,22 @@ const Shop = () => {
 		setCategory(newCategory);
 	}
 
+	const [minPrice, setMinPrice] = useState();
+	const [maxPrice, setMaxPrice] = useState();
+	// filter minumum and maximum price
+
+	const handleFilter = () => {
+		const filter = products?.filter((product) => {
+			return product.price >= minPrice && product.price <= maxPrice;
+		});
+
+	};
+
+	
+
 	return (
 		<ShopContainer>
 			<ShopHeading>Shop {category}</ShopHeading>
-			
 			<ShopGroup>
 				<ProductFilter>
 					<FilterGroup>
@@ -87,6 +97,7 @@ const Shop = () => {
 								placeholder="max"
 							/>
 						</PriceInput>
+							<FilterButton onClick={() => handleFilter}>Filter</FilterButton>
 					</FilterGroup>
 				</ProductFilter>
 

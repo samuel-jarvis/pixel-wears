@@ -7,9 +7,8 @@ import { motion, LayoutGroup } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
-
 
 import {
 	Nav,
@@ -21,6 +20,8 @@ import {
 	ListLinks,
 	MenuImage,
 	LegalList,
+	CloseBtn,
+	CloseNav
 } from './NavbarStyled';
 import CartModal from '../CartModal/CartModal';
 
@@ -125,11 +126,28 @@ const menuList2 = {
 };
 
 const Navbar = () => {
-	const modalSate = useSelector(state =>  (state.value))
+	const modalSate = useSelector((state) => state.value);
 
 	const [showCartModal, setShowCartModal] = useState(false);
 
 	const [isOpen, setIsOpen] = useState(false);
+
+	const [sticky, setSticky] = useState(false);
+
+	// iife
+	const handleScroll = () => {
+		if (window.scrollY > 200) {
+			setSticky(true);
+		} else {setSticky(false);}
+	}
+
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll);
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		}
+	} , [])
 
 	const handleClick = () => {
 		isOpen ? setIsOpen(false) : setIsOpen(true);
@@ -143,18 +161,22 @@ const Navbar = () => {
 
 	return (
 		<>
-		<AnimatePresence>
-			{
-				showCartModal && <CartModal showModal={setShowCartModal}/>
-			}
-		</AnimatePresence>
+			<AnimatePresence>
+				{showCartModal && <CartModal showModal={setShowCartModal} />}
+			</AnimatePresence>
+
 			
+
 			<Menu
 				variants={menu}
 				initial="hidden"
 				animate={isOpen ? 'visible' : 'hidden'}
 				transition={{ duration: 1.5 }}
 			>
+				<CloseNav onClick={handleClick}>
+					{isOpen ? <GrClose /> : <BsList />}
+				</CloseNav>
+
 				<MenuList variants={menuList}>
 					{links.map(({ name, path, id }) => (
 						<ListLinks key={id} variants={listVariants}>
@@ -181,7 +203,7 @@ const Navbar = () => {
 				</MenuImage>
 			</Menu>
 
-			<Nav variants={parentVariant} initial="hidden" animate="visible">
+			<Nav sticky={sticky} variants={parentVariant} initial="hidden" animate="visible">
 				<MenuBtn variants={variants} onClick={handleClick}>
 					{isOpen ? <GrClose /> : <BsList />}
 				</MenuBtn>

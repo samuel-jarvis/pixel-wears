@@ -9,7 +9,7 @@ export const HeroContainer = styled(Container)`
   justify-content: center;
   padding-top: 15rem;
   padding-bottom: 10rem;
-  min-height: 90vh;
+  min-height: 80vh;
   /* border-radius:  0 50% 50%/0 0 100% 100%; */
   transform: scale(1);
 
@@ -22,7 +22,8 @@ export const HeroContainer = styled(Container)`
     height: 100%;
     background-color: var(--bg);
     border-radius: 0 50% 50%/0 0 100% 100%;
-    transform: scale(1.);
+    /* transform: scale(1.2); */
+  }
 `
 
 export const Text = styled(motion.p)`

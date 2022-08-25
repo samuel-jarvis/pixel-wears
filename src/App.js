@@ -1,4 +1,4 @@
-import 'normalize.css'
+import 'normalize.css';
 import GlobalStyle from './globalStyles';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
@@ -8,6 +8,8 @@ import About from './pages/About';
 import Footer from './components/Footer/Footer';
 import Shop from './pages/Shop/Shop';
 import Cart from './pages/Cart/Cart';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 	return (
@@ -15,7 +17,11 @@ function App() {
 			<GlobalStyle />
 
 			<Navbar />
-			
+			<ToastContainer 
+				position="top-center" 
+				newestOnTop={false} 
+				/>
+
 			<Routes>
 				<Route exact path="/" element={<Home />} />
 				<Route path="about" element={<About />} />

@@ -6,6 +6,12 @@ const GlobalStyles = createGlobalStyle`
     --font-mako: 'Mako', sans-serif;
     --font-styled: "OrpheusW05-Regular";
     --brown: #A6753F;
+    --toastify-color-progress-light: var(--brown);
+    --toastify-text-color-light: #000;
+  }
+
+  .Toastify__toast--error::after {
+    font-size: 1.5rem;
   }
 
   * {
@@ -19,7 +25,13 @@ const GlobalStyles = createGlobalStyle`
     font-size: 62.5%; 
     height: 100%;
     scroll-behavior: smooth;
-  }
+
+
+  .Toastify__toast-body > div:last-child {
+    font-size: 1.4rem;
+}
+
+  } 
 
   body {
     color: ;
@@ -71,7 +83,7 @@ export const Button = styled.div`
   font-size: 1.8rem;
   color: white;
   padding: 1rem 2.5rem;
-  background-color: var(--blue);
+  background-color: var(--brown);
   border-radius: 0.5rem;
   cursor: pointer !important;
   transition: all 0.2s linear;

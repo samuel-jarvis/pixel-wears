@@ -3,6 +3,7 @@ import { GrClose } from 'react-icons/gr';
 import { motion } from 'framer-motion';
 import {BsDash, BsPlus} from 'react-icons/bs';
 import {BiTrashAlt} from 'react-icons/bi';
+import { Button } from "../../globalStyles";
 
 
 export const Overlay = styled(motion.div)`
@@ -68,7 +69,7 @@ export const CartProducts = styled.div`
   height: 50rem;
   overflow: hidden;
   overflow-y: scroll;
-  margin-top: 2rem;
+  margin: 4rem 0;
 
   &::-webkit-scrollbar {
     width: 3px;
@@ -134,6 +135,11 @@ export const Total = styled.div`
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--brown);
 
+  p {
+    font-size: 2rem;
+    font-family: var(--font-styled);
+  }
+
 `
 
 export const SubTotal = styled.div`
@@ -144,6 +150,11 @@ export const SubTotal = styled.div`
 
 export const CartBtns = styled.div`
 
+`
+
+export const Checkout = styled(Button)`
+  display: inline-block;
+  margin-top: 2rem;
 `
 
 export const Quantity = styled.div`
