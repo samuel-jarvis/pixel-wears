@@ -3,7 +3,7 @@ import SingleProduct from '../../components/SingleProduct/SingleProduct';
 import { useAPI } from '../../hook/useAPI';
 import { BsDashLg } from 'react-icons/bs';
 import { useState } from 'react';
-import Loading from '../../components/Loading/Loading'
+import Loading from '../../components/Loading/Loading';
 
 import {
 	ShopContainer,
@@ -15,7 +15,7 @@ import {
 	PriceInput,
 	FilterButton,
 } from './ShopStyled';
-// men's%20clothing
+
 const Categories = [
 	'Men Clothing',
 	'Women Clothing',
@@ -24,36 +24,44 @@ const Categories = [
 ];
 
 const NewCategories = [
+	{ name: 'All', api: '' },
 	{
-		name: "Men Clothing",
-		api: "category/men's%20clothing"
+		name: 'Men Clothing',
+		api: "category/men's%20clothing",
 	},
 	{
 		name: "Women's Clothing",
-		api: "category/women's%20clothing"
+		api: "category/women's%20clothing",
 	},
 	{
-		name: "Jewelery",
-		api: "category/jewelery"
+		name: 'Jewelery',
+		api: 'category/jewelery',
 	},
 	{
-		name: "Electronics",
-		api: "category/electronics"
-	}
-]
+		name: 'Electronics',
+		api: 'category/electronics',
+	},
+];
 
 
 const Shop = () => {
-  // const { data, loading, error, query } = useAPI(category);
-  const [category, setCategory] = useState('')
-  const { data, loading, error, query } = useAPI(`${category}`);
-  
+	const [isFiltered, setIsFiltered] = useState(false);
+	const [displayProducts, setDisplayproducts] = useState([]);
+	const [category, setCategory] = useState('');
+	const { data, loading, error, query } = useAPI(`${category}`);
+
+	useEffect(() => {
+		if (data) {
+			setDisplayproducts(data);
+		}
+	}, [data]);
+
 	const products = data;
 
 	const handleClick = (category) => {
 		const newCategory = category.toLowerCase();
 		setCategory(newCategory);
-	}
+	};
 
 	const [minPrice, setMinPrice] = useState();
 	const [maxPrice, setMaxPrice] = useState();
@@ -63,10 +71,16 @@ const Shop = () => {
 		const filter = products?.filter((product) => {
 			return product.price >= minPrice && product.price <= maxPrice;
 		});
-
+		setDisplayproducts(filter)
+		setIsFiltered(true);
 	};
 
-	
+	const clearFilter = () => {
+		setMaxPrice('');
+		setMinPrice('');
+		setDisplayproducts(products);
+		setIsFiltered(false);
+	}
 
 	return (
 		<ShopContainer>
@@ -76,7 +90,9 @@ const Shop = () => {
 					<FilterGroup>
 						<h3>Category</h3>
 						{NewCategories.map((category) => (
-							<li key={category.name} onClick={() => handleClick(category.api)}>{category.name}</li>
+							<li key={category.name} onClick={() => handleClick(category.api)}>
+								{category.name}
+							</li>
 						))}
 					</FilterGroup>
 
@@ -97,17 +113,23 @@ const Shop = () => {
 								placeholder="max"
 							/>
 						</PriceInput>
-							<FilterButton onClick={() => handleFilter}>Filter</FilterButton>
+
+						{ isFiltered ? 
+							( <FilterButton onClick={clearFilter}>Clear Filter</FilterButton>) 
+								: 
+							( <FilterButton onClick={handleFilter}>Filter</FilterButton>)
+						}
+						
 					</FilterGroup>
 				</ProductFilter>
 
 				<ProductsList>
-					{
-						loading && <Loading style={{}}/>
-					}
+					{loading && <Loading style={{}} />}
 
-					{products &&
-						products.map((product) => (
+					{!displayProducts.length && !loading && <h1>No products found</h1>}
+
+					{displayProducts &&
+						displayProducts.map((product) => (
 							<SingleProduct key={product.id} product={product} />
 						))}
 

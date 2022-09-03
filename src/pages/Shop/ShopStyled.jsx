@@ -62,7 +62,6 @@ export const PriceInput = styled.div`
     border: 1px solid #BF996F;
     width: 10rem;
     color: rgba(0, 0, 0, 0.8);
-
   }
 
   & :not(input) {

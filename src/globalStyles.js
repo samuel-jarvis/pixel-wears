@@ -90,7 +90,7 @@ export const Button = styled.div`
 
   &:hover {
     font-size: 1.9rem;
-    background-color: var(--blue-hover);
+    /* background-color: var(--blue-hover); */
   }
 `
 
