@@ -16,7 +16,12 @@ export const Nav = styled(motion.nav)`
 	/* position: ${(props) => (props.sticky === true ? 'sticky' : '')}; */
 	background-color: ${(props) => (props.sticky === true ? 'white' : '')};
 	transition: all 0.2s ease-in-out;
-`;
+
+	@media screen and (max-width: 768px) {
+		padding: 1rem 2rem;
+	}
+`
+;
 
 export const MenuBtn = styled(motion.div)`
 	color: black;
@@ -63,6 +68,10 @@ export const Menu = styled(motion.div)`
 	background-repeat: no-repeat;
 	background-position: center;
 	padding: 15rem 0 0 10rem;
+
+	@media screen and (max-width: 768px) {
+		padding: 13rem 0 0 7rem;
+	}
 `;
 
 export const CloseBtn = styled(GrClose)`
@@ -106,6 +115,14 @@ export const MenuImage = styled(motion.div)`
 		height: 100%;
 		object-fit: cover;
 	}
+
+	@media screen and (max-width: 1024px) {
+		width: 200px;
+  }
+
+	@media screen and (max-width: 700px) {
+		display: none;
+  }
 `;
 
 export const LegalList = styled(motion.ul)`

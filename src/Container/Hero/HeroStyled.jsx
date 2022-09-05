@@ -36,6 +36,15 @@ export const Text = styled(motion.p)`
   position: absolute;
   /* transform: translate(-50%, -50%); */
   /* left: 50%;  */
+
+  @media screen and (max-width: 768px) {
+    font-size: 13rem;
+    /* top: 30rem; */
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 6rem;
+  }
 `
 
 export const HeroImage = styled(motion.img)`
@@ -43,6 +52,10 @@ export const HeroImage = styled(motion.img)`
   border-radius: 10%;
   width: 30rem;
   z-index: 1;
+
+  @media screen and (max-width: 400px) {
+    width: 30rem;
+  }
 `
 
 export const HeroButton = styled(Button)`

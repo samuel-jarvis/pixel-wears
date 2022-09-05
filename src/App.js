@@ -8,9 +8,11 @@ import About from './pages/About';
 import Footer from './components/Footer/Footer';
 import Shop from './pages/Shop/Shop';
 import Cart from './pages/Cart/Cart';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Checkout from './pages/Checkout/Checkout';
+import Confirmation from './pages/Confirmation/Confirmation';
+
 
 function App() {
 	return (
@@ -18,10 +20,7 @@ function App() {
 			<GlobalStyle />
 
 			<Navbar />
-			<ToastContainer 
-				position="top-center" 
-				newestOnTop={false} 
-				/>
+			<ToastContainer position="top-center" newestOnTop={false} />
 
 			<Routes>
 				<Route exact path="/" element={<Home />} />
@@ -30,6 +29,8 @@ function App() {
 				<Route path="cart" element={<Cart />} />
 				<Route path="checkout" element={<Checkout />} />
 				<Route path="/productDetail/:id" element={<ProductDetail />} />
+				<Route path="confirmation" element={<Confirmation />} />
+
 			</Routes>
 
 			<Footer />

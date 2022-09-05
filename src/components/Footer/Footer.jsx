@@ -1,6 +1,8 @@
 import React from 'react';
 import { FooterContainer, FooterGroup, FooterELement, FooterForm, Copyright } from './FooterStyled';
 import FooterData from '../../Data/footer'
+import { toast } from 'react-toastify';
+
 
 const Footer = () => {
 	return (
@@ -19,7 +21,7 @@ const Footer = () => {
             <h3>{link.heading} </h3>
             <ul>
               {link.links.map(link => (
-								<li>{link}</li>
+								<li key={link}>{link}</li>
 							))}
             </ul>
           </FooterELement>
@@ -29,13 +31,13 @@ const Footer = () => {
 					<h5>Subscribe to get daily updates</h5>
 					<FooterForm>
 						<input type="text" />
-						<button>Subscribe</button>
+						<button onClick={() => toast("Thanks for subscribing")}>Subscribe</button>
 					</FooterForm>
 				</FooterELement>
 			</FooterGroup>
 
 			<Copyright>Copyright 2022. All rights reserved.</Copyright>
-			{/* <Copyright>Designed by @Adeneyii and built be @SamJarviss</Copyright> */}
+			{/* <Copyright>Designed by @Adeniyii and built be @SamJarvis</Copyright> */}
 		</FooterContainer>
 	);
 };

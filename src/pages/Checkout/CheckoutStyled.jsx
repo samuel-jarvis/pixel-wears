@@ -76,6 +76,7 @@ export const ProductTotal = styled.div`
   color: var(--brown);
 `
 export const SummaryInfo = styled.div`
+  margin-top: 6rem;
   h3 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -97,7 +98,6 @@ export const SummaryDetails = styled.div`
   font-weight: ${props => props.bold ? 'bold' : 'normal'};
   margin-top: ${props => props.bold ? '3rem' : ''};
 `
-
 
 export const CheckoutButton = styled(Button)`
   text-align: center;

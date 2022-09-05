@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
+import { useMediaQuery } from '../../hook/useMedia';
+
 
 import {
 	Nav,
@@ -21,7 +23,7 @@ import {
 	MenuImage,
 	LegalList,
 	CloseBtn,
-	CloseNav
+	CloseNav,
 } from './NavbarStyled';
 import CartModal from '../CartModal/CartModal';
 
@@ -126,6 +128,10 @@ const menuList2 = {
 };
 
 const Navbar = () => {
+	const isSmall = useMediaQuery('(max-width: 1000px)');
+	console.log(isSmall)
+
+
 	const modalSate = useSelector((state) => state.value);
 
 	const [showCartModal, setShowCartModal] = useState(false);
@@ -138,16 +144,17 @@ const Navbar = () => {
 	const handleScroll = () => {
 		if (window.scrollY > 200) {
 			setSticky(true);
-		} else {setSticky(false);}
-	}
-
+		} else {
+			setSticky(false);
+		}
+	};
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
-		}
-	} , [])
+		};
+	}, []);
 
 	const handleClick = () => {
 		isOpen ? setIsOpen(false) : setIsOpen(true);
@@ -164,8 +171,6 @@ const Navbar = () => {
 			<AnimatePresence>
 				{showCartModal && <CartModal showModal={setShowCartModal} />}
 			</AnimatePresence>
-
-			
 
 			<Menu
 				variants={menu}
@@ -196,14 +201,21 @@ const Navbar = () => {
 				<MenuImage
 					key={isOpen}
 					initial={{ width: 0 }}
-					animate={{ width: '600px' }}
+					animate={{ width: isSmall ? '400px' : "600px" }}
+					// animate={{ width: '600px' }}
+					// isSmall ? animate = {{ width: '600px' }} : {{ width: '600px' }}
 					transition={{ delay: 1, duration: 1 }}
 				>
 					<img src={menuGirl} alt="menu" />
 				</MenuImage>
 			</Menu>
 
-			<Nav sticky={sticky} variants={parentVariant} initial="hidden" animate="visible">
+			<Nav
+				sticky={sticky}
+				variants={parentVariant}
+				initial="hidden"
+				animate="visible"
+			>
 				<MenuBtn variants={variants} onClick={handleClick}>
 					{isOpen ? <GrClose /> : <BsList />}
 				</MenuBtn>

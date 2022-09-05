@@ -32,7 +32,7 @@ export const Product = styled(SplideSlide)`
 export const ProductImage = styled.div`
   /* background-color: #DFE4E3; */
   text-align: center;
-  padding: 8rem 4rem;
+  padding: 6rem 4rem;
   border-radius: 8rem 8rem 0 0;
   margin-bottom: 1rem;
   position: relative;

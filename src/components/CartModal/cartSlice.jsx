@@ -13,7 +13,7 @@ const cartSlice = createSlice({
 
 			if (itemInCart) {
 				itemInCart.quantity++;
-				toast(`Increased ${newItem.title} amount`, {});
+				toast("Increased Product quantity");
 			} else {
 				state.push({ ...newItem, quantity: 1 });
 				toast(`${newItem.title.slice(0, 20)}... added to cart`, {});
@@ -45,7 +45,7 @@ const cartSlice = createSlice({
 
 			if (itemInCart) {
 				state.splice(state.indexOf(itemInCart), 1);
-				toast(`${itemInCart.title} removed from cart`, {});
+				toast(`${itemInCart.title.slice(0, 20)}... removed from cart`, {});
 			}
 		},
 	},

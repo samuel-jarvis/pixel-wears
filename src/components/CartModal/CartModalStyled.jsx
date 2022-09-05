@@ -21,10 +21,17 @@ export const CartCard = styled(motion.div)`
   top: 0;
   right: 0;
   width: 40vw;
+  min-width: 36rem;
   height: 100%;
   background-color: #fff;
   z-index: 2000000;
   padding: 4rem;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    padding: 3rem;
+    padding-right: 2rem;
+  }
 `
 
 
@@ -106,11 +113,21 @@ export const CartProduct = styled.div`
     border-radius: 5rem 5rem 0 0;
     display: inline;
     margin-right: 3rem;
+
+    @media screen and (max-width: 768px) {
+      width: 5rem;
+      height: 5rem;
+      margin-right: 2rem;
+    }
   }
 
   h4 {
     font-size: 1.7rem;
     margin-bottom: 1rem;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.5rem;
+    }
   }
   p {
     font-size: 1.6rem;
@@ -166,6 +183,14 @@ export const Quantity = styled.div`
   font-size: 1.8rem;
   width: 10rem;
   margin-right: 4rem;
+
+  @media screen and (max-width: 768px) {
+    margin-right: 2rem;
+    font-size: 1.6rem;
+    padding: .6rem;
+    width: 6rem;
+
+  }
 `
 
 export const Add = styled(BsPlus)``

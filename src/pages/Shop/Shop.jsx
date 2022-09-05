@@ -4,24 +4,19 @@ import { useAPI } from '../../hook/useAPI';
 import { BsDashLg } from 'react-icons/bs';
 import { useState } from 'react';
 import Loading from '../../components/Loading/Loading';
+import { FiFilter } from 'react-icons/fi';
 
 import {
 	ShopContainer,
 	ShopHeading,
 	ShopGroup,
+	Filter,
 	ProductFilter,
 	ProductsList,
 	FilterGroup,
 	PriceInput,
 	FilterButton,
 } from './ShopStyled';
-
-const Categories = [
-	'Men Clothing',
-	'Women Clothing',
-	'Jewelery',
-	'Electronics',
-];
 
 const NewCategories = [
 	{ name: 'All', api: '' },
@@ -43,7 +38,6 @@ const NewCategories = [
 	},
 ];
 
-
 const Shop = () => {
 	const [isFiltered, setIsFiltered] = useState(false);
 	const [displayProducts, setDisplayproducts] = useState([]);
@@ -61,18 +55,19 @@ const Shop = () => {
 	const handleClick = (category) => {
 		const newCategory = category.toLowerCase();
 		setCategory(newCategory);
+		setShowFilter(false);
 	};
 
 	const [minPrice, setMinPrice] = useState();
 	const [maxPrice, setMaxPrice] = useState();
 	// filter minumum and maximum price
-
 	const handleFilter = () => {
 		const filter = products?.filter((product) => {
 			return product.price >= minPrice && product.price <= maxPrice;
 		});
-		setDisplayproducts(filter)
+		setDisplayproducts(filter);
 		setIsFiltered(true);
+		setShowFilter(false);
 	};
 
 	const clearFilter = () => {
@@ -80,13 +75,29 @@ const Shop = () => {
 		setMinPrice('');
 		setDisplayproducts(products);
 		setIsFiltered(false);
-	}
+	};
+
+
+	const [showFilter, setShowFilter] = useState(false);
+
+	const clickFilter = () => {
+		showFilter ? setShowFilter(false) : setShowFilter(true);
+		console.log(showFilter);
+	};
 
 	return (
 		<ShopContainer>
-			<ShopHeading>Shop {category}</ShopHeading>
-			<ShopGroup>
-				<ProductFilter>
+			<ShopHeading>Shop</ShopHeading>
+			<ShopGroup>	
+				<Filter onClick={() => clickFilter()}>
+					<p>Filter</p>
+					<FiFilter />
+				</Filter>
+
+				{
+					showFilter && (
+
+				<ProductFilter showFilter={showFilter}>
 					<FilterGroup>
 						<h3>Category</h3>
 						{NewCategories.map((category) => (
@@ -97,7 +108,8 @@ const Shop = () => {
 					</FilterGroup>
 
 					<FilterGroup>
-						<h3>Price</h3>
+						<h3 onClick={() => setShowFilter(false)}>Price</h3>
+
 						<PriceInput>
 							<input
 								type="number"
@@ -114,14 +126,16 @@ const Shop = () => {
 							/>
 						</PriceInput>
 
-						{ isFiltered ? 
-							( <FilterButton onClick={clearFilter}>Clear Filter</FilterButton>) 
-								: 
-							( <FilterButton onClick={handleFilter}>Filter</FilterButton>)
-						}
-						
+						{isFiltered ? (
+							<FilterButton onClick={clearFilter}>Clear Filter</FilterButton>
+						) : (
+							<FilterButton onClick={handleFilter}>Filter</FilterButton>
+						)}
 					</FilterGroup>
 				</ProductFilter>
+
+			)
+			}
 
 				<ProductsList>
 					{loading && <Loading style={{}} />}

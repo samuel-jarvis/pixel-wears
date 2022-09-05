@@ -25,12 +25,24 @@ const Lastest = () => {
 					arrows: false,
 					pagination: false,
 					perPage: 4,
+					breakpoints: {
+						800: {
+							perPage: 3,
+						},
+						640: {
+							perPage: 2,
+						},
+						480: {
+							perPage: 1,
+						},
+					},
 					autoScroll: {
 						pauseOnHover: true,
 						pauseOnFocus: true,
 						rewind: false,
 						speed: 0.6,
 					},
+					
 				}}
 				extensions={{ AutoScroll }}
 			>

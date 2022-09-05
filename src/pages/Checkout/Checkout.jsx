@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
 	CheckoutContainer,
 	CheckoutHeading,
@@ -21,7 +22,9 @@ import {
 
 const Checkout = () => {
 	const cart = useSelector((state) => state.cart);
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
+	let navigate = useNavigate();
+
 
 	return (
 		<CheckoutContainer>
@@ -104,7 +107,7 @@ const Checkout = () => {
 								<p>${cart.reduce((a, b) => a + b.price * b.quantity, 0).toFixed(2)}</p>
 							</SummaryDetails>
 						</SummaryInfo>	
-						<CheckoutButton>Checkout</CheckoutButton>	
+						<CheckoutButton onClick={() => navigate('/confirmation')}>Checkout</CheckoutButton>	
         </CheckoutProducts>
 			</CheckoutGroup>
 		</CheckoutContainer>
