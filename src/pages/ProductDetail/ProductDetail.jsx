@@ -7,6 +7,9 @@ import {AnimatePresence} from 'framer-motion'
 import Loading from '../../components/Loading/Loading'
 import {addToCart} from '../../components/CartModal/cartSlice'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 import {ProductContainer, 
@@ -30,13 +33,20 @@ const ProductDetail = () => {
     // console.log('changed')
   },[]);
 
-  const [selectedSize, setSelectedSize] = useState('')
+  const [selectedSize, setSelectedSize] = useState('M')
 
   const dispatch = useDispatch()
 
   // add the selected size to the cart
   const NewCart = [{...product, selectedSize}]
   console.log(NewCart)
+
+  let navigate = useNavigate();
+
+  const handleBuyNow = (NewCart) => {
+    dispatch(addToCart(NewCart))
+    navigate('/checkout')
+  }
 
   return (
     <AnimatePresence>
@@ -70,7 +80,7 @@ const ProductDetail = () => {
 
             <div>
               <BlackBtn onClick={() => dispatch(addToCart(product))}>ADD TO CART</BlackBtn>
-              <WhiteBtn>BUY NOW</WhiteBtn>
+              <WhiteBtn onClick={() => handleBuyNow(product)}>BUY NOW</WhiteBtn>
             </div>
 
           </ProductDetails>

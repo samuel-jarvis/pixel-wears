@@ -23,6 +23,7 @@ import {
 	Add,
 	Minus,
 	Delete,
+	EmptyCart,
 } from './CartModalStyled';
 
 const variant = {
@@ -51,7 +52,7 @@ const CartModal = ({ showModal }) => {
 			<CartCard
 				initial={{ x: '100vw' }}
 				animate={{ x: 0 }}
-				transition={{ type: 'tween', duration: 0.5 }}
+				transition={{ ease: 'easeInOut', duration: 0.5 }}
 				exit={{ x: '100vw' }}
 			>
 				<CartHeading>
@@ -88,17 +89,21 @@ const CartModal = ({ showModal }) => {
 							<Delete onClick={() => dispatch(removeFromCart(item.id))} />
 						</CartProduct>
 					))}
+					
+					{cart.length === 0 && <EmptyCart>Your cart is empty</EmptyCart>}
 				</CartProducts>
 
 				<Total>
-					<SubTotal>Total</SubTotal>
+					<SubTotal>Sub-total:</SubTotal>
 					<p>
 						${cart.reduce((a, b) => a + b.price * b.quantity, 0).toFixed(2)}
 					</p>
 				</Total>
 
 				<CartBtns>
-					<Checkout onClick={() => navigate('/checkout')}>Checkout</Checkout>
+					<Checkout onClick={() => navigate('/checkout')}>
+						Proceed to Checkout
+					</Checkout>
 				</CartBtns>
 			</CartCard>
 		</Overlay>

@@ -5,7 +5,7 @@ import { BsDashLg } from 'react-icons/bs';
 import { useState } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { FiFilter } from 'react-icons/fi';
-import {AiOutlineClose} from 'react-icons/ai'
+import { AiOutlineClose } from 'react-icons/ai';
 
 import {
 	ShopContainer,
@@ -17,7 +17,7 @@ import {
 	FilterGroup,
 	PriceInput,
 	FilterButton,
-	CloseIcon
+	CloseIcon,
 } from './ShopStyled';
 
 const NewCategories = [
@@ -79,7 +79,6 @@ const Shop = () => {
 		setIsFiltered(false);
 	};
 
-
 	const [showFilter, setShowFilter] = useState(false);
 
 	const clickFilter = () => {
@@ -89,12 +88,12 @@ const Shop = () => {
 	return (
 		<ShopContainer>
 			<ShopHeading>Shop</ShopHeading>
-			<ShopGroup>	
+			<ShopGroup>
 				<Filter onClick={() => clickFilter()}>
 					<p>Filter</p>
 					<FiFilter />
 				</Filter>
-				
+
 				<ProductFilter display={showFilter ? 1 : 0}>
 					<FilterGroup>
 						<h3>Category</h3>
@@ -130,7 +129,7 @@ const Shop = () => {
 							<FilterButton onClick={handleFilter}>Filter</FilterButton>
 						)}
 					</FilterGroup>
-					
+
 					<CloseIcon>
 						<AiOutlineClose onClick={() => setShowFilter(false)} />
 					</CloseIcon>
@@ -139,12 +138,14 @@ const Shop = () => {
 				<ProductsList>
 					{loading && <Loading style={{}} />}
 
-					{!displayProducts.length && !loading && <h1>No products found</h1>}
+					{!displayProducts.length && !loading && <h1 style={{textAlign: "center"}}>No products found</h1>}
 
 					{displayProducts &&
 						displayProducts.map((product) => (
 							<SingleProduct key={product.id} product={product} />
-						))}
+					))}
+
+					{/* no  */}
 
 					{error && <p>{error.message}</p>}
 				</ProductsList>

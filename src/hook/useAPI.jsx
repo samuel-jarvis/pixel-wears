@@ -7,7 +7,7 @@ export const useAPI = (query) => {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-    setData(products);
+    // setData(products);
 
 		const fetchData = async () => {
 			try {

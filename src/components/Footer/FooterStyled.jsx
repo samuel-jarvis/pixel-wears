@@ -61,4 +61,9 @@ export const Copyright = styled.div`
   font-size: 1.4rem;
   margin-top: 4rem;
   color: rgba(0, 0, 0, 0.7);
+
+  a {
+    color: rgba(0, 0, 0, 0.7);
+    /* text-decoration: none; */
+  }
 `

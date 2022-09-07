@@ -29,21 +29,25 @@ export const Product = styled(SplideSlide)`
   }
 `
 
+export const ImageBox = styled.div`
+  width: 11rem;
+  margin: auto;
+
+  img {
+    width: 100%;
+  }
+`
+
 export const ProductImage = styled.div`
   /* background-color: #DFE4E3; */
   text-align: center;
-  padding: 6rem 4rem;
+  padding: 2rem 4rem;
   border-radius: 8rem 8rem 0 0;
   margin-bottom: 1rem;
   position: relative;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
-
-
-  img {
-    height: 12rem;
-    margin:auto;
-  }
+  height: 30rem;
+  display: flex;
 `
 
 export const CartButton = styled.button`

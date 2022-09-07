@@ -166,12 +166,13 @@ export const SubTotal = styled.div`
 `
 
 export const CartBtns = styled.div`
-
+  text-align: center;
 `
 
 export const Checkout = styled(Button)`
   display: inline-block;
   margin-top: 2rem;
+  text-align: center;
 `
 
 export const Quantity = styled.div`
@@ -198,4 +199,11 @@ export const Minus = styled(BsDash)``
 export const Delete = styled(BiTrashAlt)`
   font-size: 2rem;
   margin-right: 2rem;
+`
+
+export const EmptyCart = styled.div`
+  font-size: 2rem;
+  font-weight: 300;
+  /* font-family: var(--font-styled); */
+  text-align: center;
 `

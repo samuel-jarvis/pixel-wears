@@ -10,10 +10,12 @@ import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import { useMediaQuery } from '../../hook/useMedia';
+import {FaBars} from 'react-icons/fa'
 
 
 import {
 	Nav,
+	Bars,
 	MenuBtn,
 	Logo,
 	CartIcon,
@@ -24,6 +26,7 @@ import {
 	LegalList,
 	CloseBtn,
 	CloseNav,
+	CartCount
 } from './NavbarStyled';
 import CartModal from '../CartModal/CartModal';
 
@@ -61,8 +64,8 @@ const variants = {
 		opacity: 1,
 		x: 0,
 		transition: {
-			duration: 2.5,
-			type: 'tween',
+			duration: 1.5,
+			// type: 'tween',
 		},
 	},
 };
@@ -77,7 +80,7 @@ const menu = {
 		x: '0',
 		opacity: 1,
 		transition: {
-			duration: 1,
+			duration: .6,
 			type: 'tween',
 		},
 	},
@@ -128,18 +131,16 @@ const menuList2 = {
 };
 
 const Navbar = () => {
+	const cart = useSelector((state) => state.cart);
+
 	const isSmall = useMediaQuery('(max-width: 1000px)');
 	console.log(isSmall)
-
-
-	const modalSate = useSelector((state) => state.value);
 
 	const [showCartModal, setShowCartModal] = useState(false);
 
 	const [isOpen, setIsOpen] = useState(false);
 
 	const [sticky, setSticky] = useState(false);
-
 
 	const handleScroll = () => {
 		if (window.scrollY > 200) {
@@ -217,7 +218,14 @@ const Navbar = () => {
 				animate="visible"
 			>
 				<MenuBtn variants={variants} onClick={handleClick}>
-					{isOpen ? <GrClose /> : <BsList />}
+					{/* {isOpen ? <GrClose /> : <BsList />} */}
+
+					<Bars>
+						<span></span>
+						<span></span>
+						<span></span>
+					</Bars>	
+
 				</MenuBtn>
 
 				<Logo to="/">
@@ -226,6 +234,7 @@ const Navbar = () => {
 
 				<CartIcon variants={variants} onClick={() => setShowCartModal(true)}>
 					<BsCart3 />
+					<CartCount>{cart.length}</CartCount>
 				</CartIcon>
 			</Nav>
 		</>

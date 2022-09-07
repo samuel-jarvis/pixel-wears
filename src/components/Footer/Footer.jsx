@@ -36,8 +36,8 @@ const Footer = () => {
 				</FooterELement>
 			</FooterGroup>
 
-			<Copyright>Copyright 2022. All rights reserved.</Copyright>
-			{/* <Copyright>Designed by @Adeniyii and built be @SamJarvis</Copyright> */}
+			{/* <Copyright>Copyright 2022. All rights reserved.</Copyright> */}
+			<Copyright>Designed by <a href="https://twitter.com/adeniyiiii">@Adeniyi</a>  and built by <a href="https://twitter.com/SamJarvis244">𝔖𝔞𝔪𝔲𝔢𝔩 𝔍𝔞𝔯𝔳𝔦𝔰</a></Copyright>
 		</FooterContainer>
 	);
 };

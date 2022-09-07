@@ -43,13 +43,13 @@ export const Text = styled(motion.p)`
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 6rem;
+    font-size: 7rem;
   }
 `
 
 export const HeroImage = styled(motion.img)`
-  border: 2px solid brown;
-  border-radius: 10%;
+  border: 4px solid #CFB111;
+  border-radius: 5rem;
   width: 30rem;
   z-index: 1;
 

@@ -9,17 +9,29 @@ export const CategoriesContainer = styled(Container)`
 export const CategoriesList = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 20px;
+  grid-gap: 4rem;
+
+  @media only screen and (max-width: 480px) {
+    grid-gap: 1rem;
+  }
 `
 export const CategoriesItem = styled(Link)`
   text-decoration: none;
   text-align: center;
+  color: #454647;
+  
   img {
     width: 100%;
     border-radius: 15rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      scale: 1.05;
+      /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+    }
 
     @media only screen and (max-width: 480px) {
-      height: 60%;
+      height: 80%;
     }
   }
 
@@ -38,6 +50,8 @@ export const RoundLogo = styled.div`
   img {
     animation: rotation 20s infinite linear;
     width: 15rem;
+
+    
   }
 
   @keyframes rotation {

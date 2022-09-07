@@ -55,6 +55,24 @@ export const CartIcon = styled(motion.div)`
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
+	position: relative;
+`;
+
+
+export const CartCount = styled(motion.div)`
+	position: absolute;
+	top: 0;
+	left: 30px;
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: white;
+	background-color: var(--brown);
+	border-radius: 50%;
+	height: 2rem;
+	width: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 export const Menu = styled(motion.div)`
@@ -146,4 +164,29 @@ export const CloseNav = styled.div`
 	top: 3rem;
 	left: 4rem;
 	font-size: 3rem;
+`
+
+export const Bars = styled(motion.div)`
+	& > * {
+		width: 3rem;
+		height: 0.3rem;
+		background-color: black;
+		margin: 0.5rem;
+		display: block;
+		border-radius: 0.5rem;
+	}
+
+	& > *:nth-child(2) {
+		width: 2rem;
+		transition: all 0.3s ease-in-out;
+	}
+
+	&:hover > *:nth-child(2) {
+		width: 3rem;
+	}
+
+
+	& > *:nth-child(2):hover {
+		width: 3rem;
+	}
 `
