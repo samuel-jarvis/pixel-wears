@@ -90,6 +90,10 @@ const Checkout = () => {
 							</Products>
 						)}
 
+						{cart.length === 0 && (
+							<h2>No Item in Cart</h2>
+						)}
+
 						<SummaryInfo>
 							<h3>Summary</h3>	
 							<SummaryDetails>
@@ -106,8 +110,13 @@ const Checkout = () => {
 								<h5>Total</h5>
 								<p>${cart.reduce((a, b) => a + b.price * b.quantity, 0).toFixed(2)}</p>
 							</SummaryDetails>
-						</SummaryInfo>	
-						<CheckoutButton onClick={() => navigate('/confirmation')}>Checkout</CheckoutButton>	
+						</SummaryInfo>
+							{/*if cart if empty  */}
+							{cart.length === 0 ? (
+								<CheckoutButton onClick={() => navigate('/shop')}>Go to Shop</CheckoutButton>
+							) : (
+								<CheckoutButton onClick={() => navigate('/confirmation')}>Checkout</CheckoutButton>	
+							)}
         </CheckoutProducts>
 			</CheckoutGroup>
 		</CheckoutContainer>

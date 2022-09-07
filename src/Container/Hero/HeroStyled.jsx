@@ -38,12 +38,12 @@ export const Text = styled(motion.p)`
   /* left: 50%;  */
 
   @media screen and (max-width: 768px) {
-    font-size: 13rem;
+    font-size: 12rem;
     /* top: 30rem; */
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 7rem;
+    font-size: 6rem;
   }
 `
 

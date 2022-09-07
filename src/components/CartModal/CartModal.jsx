@@ -57,7 +57,7 @@ const CartModal = ({ showModal }) => {
 			>
 				<CartHeading>
 					<h3>Your Cart</h3>
-					<p>{cart.length}</p>
+					{/* <p>{cart.length}</p> */}
 					<CloseModal
 						onClick={(e) => {
 							showModal(false);

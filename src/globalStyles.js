@@ -4,12 +4,12 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --bg: #ECE6E0;
     --font-mako: 'Mako', sans-serif;
-    --font-styled: "OrpheusW05-Regular";
+    --font-styled: "OrpheusW05-Regular", 'Noto Serif JP', serif;
+    /* --font-styled:  'Noto Serif JP', serif; */
     --brown: #A6753F;
     --toastify-color-progress-light: var(--brown);
     --toastify-text-color-light: #000;
   }
-
   .Toastify__toast--error::after {
     font-size: 1.5rem;
   }

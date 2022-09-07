@@ -10,7 +10,6 @@ export const CheckoutHeading = styled(Heading)`
   padding-bottom: 2rem;
 `
 
-
 export const CheckoutGroup = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -55,6 +54,7 @@ export const InputGroup = styled.div`
 export const CheckoutProducts = styled.div`
   border: 1px solid #e6e6e6;
   padding: 2rem;
+  text-align: center;
 `
 export const Products = styled.div`
   display: flex;
