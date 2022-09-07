@@ -16,7 +16,7 @@ const Categories = () => {
 
       <CategoriesList>
         {categories.map(category => (
-          <CategoriesItem to={category.link} key={category.id}>
+          <CategoriesItem to='/shop' key={category.id}>
             <img src={category.image} alt={category.name} />
             <h3>{category.name}</h3>
           </CategoriesItem>

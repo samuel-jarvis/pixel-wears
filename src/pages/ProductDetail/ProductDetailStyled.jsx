@@ -4,12 +4,22 @@ import {motion} from 'framer-motion'
 
 export const ProductContainer = styled(motion.div)`
   padding: 10rem 10rem;
+  @media (max-width: 1100px) {
+    padding: 8rem 4rem;
+  }
+
+  @media (max-width: 500px) {
+    padding: 6rem 2rem;
+  }
 `
 
 export const ProductGroup = styled.div`
   display: flex;
   margin-top: 5rem;
 
+  @media screen and (max-width: 1000px) {
+    display: block;
+  }
 `
 
 export const ProductImage = styled.div`
@@ -17,6 +27,10 @@ export const ProductImage = styled.div`
     flex: 0 0 50%;
     text-align: center;  
     margin-right: 8rem;
+
+    @media screen and (max-width: 1000px) {
+      margin-right: 0;
+  }
 `
 
 export const Image = styled.div`

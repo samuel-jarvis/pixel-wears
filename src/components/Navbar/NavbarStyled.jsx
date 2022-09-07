@@ -14,7 +14,7 @@ export const Nav = styled(motion.nav)`
 	z-index: 80;
 	position: fixed;
 	/* position: ${(props) => (props.sticky === true ? 'sticky' : '')}; */
-	background-color: ${(props) => (props.sticky === true ? 'white' : '')};
+	background-color: ${(props) => (props.sticky ? 'white' : '')};
 	transition: all 0.2s ease-in-out;
 
 	@media screen and (max-width: 768px) {

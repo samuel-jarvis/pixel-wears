@@ -10,6 +10,7 @@ export const FooterContainer = styled(Container)`
 export const FooterGroup = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 `
 
@@ -18,7 +19,9 @@ export const FooterELement = styled.div`
     font-size: 3rem;
     font-family: var(--font-styled);  
     font-weight: 400;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+
+    @media only screen and (max-width: ){}
   }
 
   li {

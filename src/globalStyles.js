@@ -14,6 +14,11 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.5rem;
   }
 
+  .Toastify__toast-theme--light {
+    max-width: 35rem;
+    margin: auto;
+  }
+
   * {
     padding: 0;
     margin: 0;

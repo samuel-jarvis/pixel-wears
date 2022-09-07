@@ -17,6 +17,10 @@ export const CategoriesItem = styled(Link)`
   img {
     width: 100%;
     border-radius: 15rem;
+
+    @media only screen and (max-width: 480px) {
+      height: 60%;
+    }
   }
 
   h3 {

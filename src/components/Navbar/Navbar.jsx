@@ -30,8 +30,8 @@ import CartModal from '../CartModal/CartModal';
 const links = [
 	{ name: 'Home', path: '/', id: 1 },
 	{ name: 'Shop', path: '/shop', id: 4 },
-	{ name: 'Cart', path: '/cart', id: 5 },
-	{ name: 'About', path: '/about', id: 2 },
+	{ name: 'Checkout', path: '/checkout', id: 5 },
+	// { name: 'About', path: '/about', id: 2 },
 	{ name: 'Contact', path: '/contact', id: 3 },
 ];
 
@@ -89,7 +89,7 @@ const menuList = {
 			when: 'beforeChildren',
 			type: 'tween',
 			staggerChildren: 0.5,
-			delayChildren: 0.6,
+			delayChildren: .3,
 		},
 	},
 };
@@ -104,7 +104,7 @@ const listVariants = {
 		opacity: 1,
 		y: 0,
 		transition: {
-			duration: 1,
+			duration: .8,
 			type: 'tween',
 		},
 	},
@@ -140,7 +140,7 @@ const Navbar = () => {
 
 	const [sticky, setSticky] = useState(false);
 
-	// iife
+
 	const handleScroll = () => {
 		if (window.scrollY > 200) {
 			setSticky(true);
@@ -176,7 +176,7 @@ const Navbar = () => {
 				variants={menu}
 				initial="hidden"
 				animate={isOpen ? 'visible' : 'hidden'}
-				transition={{ duration: 1.5 }}
+				transition={{ duration: .5 }}
 			>
 				<CloseNav onClick={handleClick}>
 					{isOpen ? <GrClose /> : <BsList />}
@@ -211,7 +211,7 @@ const Navbar = () => {
 			</Menu>
 
 			<Nav
-				sticky={sticky}
+				sticky={sticky ? 1 : 0}
 				variants={parentVariant}
 				initial="hidden"
 				animate="visible"

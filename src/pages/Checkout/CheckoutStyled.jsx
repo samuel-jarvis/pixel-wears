@@ -15,6 +15,10 @@ export const CheckoutGroup = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 4rem;
+
+    @media only screen and (max-width: 800px) {
+      grid-template-columns: 1fr;
+    } 
 `
 export const CheckoutForm = styled.div`
   border: 1px solid #e6e6e6;

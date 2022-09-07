@@ -5,6 +5,7 @@ import { BsDashLg } from 'react-icons/bs';
 import { useState } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { FiFilter } from 'react-icons/fi';
+import {AiOutlineClose} from 'react-icons/ai'
 
 import {
 	ShopContainer,
@@ -16,6 +17,7 @@ import {
 	FilterGroup,
 	PriceInput,
 	FilterButton,
+	CloseIcon
 } from './ShopStyled';
 
 const NewCategories = [
@@ -82,7 +84,6 @@ const Shop = () => {
 
 	const clickFilter = () => {
 		showFilter ? setShowFilter(false) : setShowFilter(true);
-		console.log(showFilter);
 	};
 
 	return (
@@ -93,11 +94,8 @@ const Shop = () => {
 					<p>Filter</p>
 					<FiFilter />
 				</Filter>
-
-				{
-					showFilter && (
-
-				<ProductFilter showFilter={showFilter}>
+				
+				<ProductFilter display={showFilter ? 1 : 0}>
 					<FilterGroup>
 						<h3>Category</h3>
 						{NewCategories.map((category) => (
@@ -132,10 +130,11 @@ const Shop = () => {
 							<FilterButton onClick={handleFilter}>Filter</FilterButton>
 						)}
 					</FilterGroup>
+					
+					<CloseIcon>
+						<AiOutlineClose onClick={() => setShowFilter(false)} />
+					</CloseIcon>
 				</ProductFilter>
-
-			)
-			}
 
 				<ProductsList>
 					{loading && <Loading style={{}} />}

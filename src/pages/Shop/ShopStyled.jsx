@@ -16,7 +16,7 @@ export const ShopGroup = styled.div`
   grid-template-columns: 350px 3fr;
   align-items: start;
 
-  @media screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1024px) {
     grid-template-columns: 1fr;
   }
 `
@@ -46,7 +46,6 @@ export const ProductFilter = styled.div`
   top: 10rem;
   align-self: start;
   margin-right: 4rem;
-;
 
   @media screen and (max-width: 1024px) {
     background-color: white;
@@ -58,8 +57,8 @@ export const ProductFilter = styled.div`
     width: 100%;
     z-index: 78;
     height: 100vh;
-    display: block;
-    /* display: ${props => props.showFilter ? 'none' : 'block'}; */
+    /* display: block; */
+    display: ${props => props.display ? 'block' : 'none'};
   }
   `
 export const FilterGroup = styled.div`
@@ -121,4 +120,18 @@ export const FilterButton = styled(Button)`
   display: inline-block;
   margin-top: 2rem;
   font-size: 1.5rem;
+`
+
+export const CloseIcon = styled.div`
+  display: none;
+
+  @media screen and (max-width: 1024px) {
+    display: block;
+    font-size: 2rem;
+    text-align: center;
+    cursor: pointer;
+    font-size: 3rem;
+    margin-top: 4rem;
+    color: var(--brown);
+  }
 `
